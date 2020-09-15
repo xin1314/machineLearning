@@ -179,7 +179,7 @@ def nnGradient(nn_params, input_layer_size, hidden_layer_size, num_labels, X, y,
         delta3[i, :] = h[i, :] - class_y[i, :]  # 交叉熵误差率
         Theta2_grad = Theta2_grad + np.dot(np.transpose(delta3[i, :].reshape(1, -1)), a2[i, :].reshape(1, -1))
         delta2[i, :] = np.dot(delta3[i, :].reshape(1, -1), Theta2_x) * sigmoidGradient(z2[i, :])
-        Theta1_grad = Theta1_grad + np.dot(np.transpose(j[i, :].reshape(1, -1)), a1[i, :].reshape(1, -1))
+        Theta1_grad = Theta1_grad + np.dot(np.transpose(delta2[i, :].reshape(1, -1)), a1[i, :].reshape(1, -1))
 
     Theta1[:, 0] = 0
     Theta2[:, 0] = 0
